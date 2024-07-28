@@ -2,7 +2,7 @@
 
 
 @section('content')
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/js/sandbox.js'])
 
     <div class="bg-blue-200">
         {{ $sandbox->ulid }}
