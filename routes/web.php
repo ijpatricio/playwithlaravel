@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\NewSandboxController;
+use App\Http\Controllers\SandboxController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'welcome')->name('home');
+
+Route::get('/new/{type?}', NewSandboxController::class)->name('new');
+
+Route::get('/sandbox/{sandbox:ulid}', [SandboxController::class, 'show'])
+    ->name('sandbox.show');
+
+
