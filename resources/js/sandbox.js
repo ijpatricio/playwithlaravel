@@ -4,9 +4,7 @@ console.log('Hello from sandbox.js');
 
 console.log(navigator)
 
-navigator.serviceWorker.register(`/build/assets`+`/cgi-worker.js`, {
-    scope: '/',
-});
+navigator.serviceWorker.register(`/cgi-worker.js`);
 
 navigator.serviceWorker.addEventListener('message', onMessage);
 

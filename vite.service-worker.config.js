@@ -3,7 +3,7 @@ import laravel from 'laravel-vite-plugin'
 
 export default defineConfig({
     build: {
-        emptyOutDir: true,
+        emptyOutDir: false,
         outDir: 'public',
         assetsDir: '',
         rollupOptions: {
