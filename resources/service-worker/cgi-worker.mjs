@@ -3,6 +3,9 @@ import { PhpCgiWorker } from "php-cgi-wasm/PhpCgiWorker.mjs";
 
 // Log requests
 const onRequest = (request, response) => {
+
+    debugger
+
 	const url = new URL(request.url);
 	const logLine = `[${(new Date).toISOString()}]`
 		+ `#${php.count} 127.0.0.1 - "${request.method}`
@@ -57,7 +60,10 @@ const php = new PhpCgiWorker({
 // Set up the event handlers
 self.addEventListener('install',  event => php.handleInstallEvent(event));
 self.addEventListener('activate', event => php.handleActivateEvent(event));
-self.addEventListener('fetch',    event => php.handleFetchEvent(event));
+self.addEventListener('fetch',    event => {
+    console.log('Fetch', event.request.url)
+    php.handleFetchEvent(event)
+});
 self.addEventListener('message',  event => php.handleMessageEvent(event));
 
 // Extras

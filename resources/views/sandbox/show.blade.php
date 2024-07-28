@@ -9,7 +9,7 @@
     </div>
 
     <div>
-
+        <a href="/php-wasm/cgi-bin/foo"> Go to service worker </a>
     </div>
 
 @endsection

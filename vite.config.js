@@ -8,7 +8,6 @@ export default defineConfig({
                 'resources/sass/app.scss',
                 'resources/js/app.js',
                 'resources/js/sandbox.js',
-                'resources/js/cgi-worker.mjs',
             ],
             refresh: true,
         }),
