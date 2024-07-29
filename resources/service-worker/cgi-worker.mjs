@@ -58,7 +58,7 @@ const php = new PhpCgiWorker({
 self.addEventListener('install',  event => php.handleInstallEvent(event));
 self.addEventListener('activate', event => php.handleActivateEvent(event));
 self.addEventListener('fetch',    event => {
-    console.log('Fetch', event.request.url)
+    // console.log('Fetch', event.request.url)
     php.handleFetchEvent(event)
 });
 self.addEventListener('message',  event => php.handleMessageEvent(event));
