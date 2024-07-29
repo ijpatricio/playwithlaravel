@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useCallback, useState} from 'react'
 import {FolderIcon, FileIcon} from 'lucide-react'
 import sendMessage from '@/lib/cgiWorkerMsgBus'
 
@@ -8,16 +8,14 @@ export function FileTree({structure, onFileSelect, path = '/persist/01J3YR5QM155
 
     const [dirs, setDirs] = useState([])
     const [files, setFiles] = useState([])
-    const [loading, setLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
-    console.log('heeey3')
 
     const loadFiles = () => {
 
-        console.log('heeey2')
-
         sendMessage('readdir', [path])
             .then(async entries => {
+                setIsLoading(true)
                 console.log('heeey1')
                 console.log(entries)
             })
