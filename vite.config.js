@@ -7,7 +7,8 @@ export default defineConfig({
             input: [
                 'resources/sass/app.scss',
                 'resources/js/app.js',
-                'resources/js/sandbox.js',
+                'resources/js/sandbox-preview.js',
+                'resources/js/sandbox-show.js',
             ],
             refresh: true,
         }),

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\NewSandboxController;
 use App\Http\Controllers\SandboxController;
+use App\Http\Controllers\SandboxPreviewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,6 @@ Route::get('/new/{type?}', NewSandboxController::class)->name('new');
 Route::get('/sandbox/{sandbox:ulid}', [SandboxController::class, 'show'])
     ->name('sandbox.show');
 
-Route::get('/php-wasm/cgi-bin/{sandbox:ulid}', [SandboxController::class, 'show'])
-    ->name('sandbox.show');
+Route::get('/php-wasm/cgi-bin/{sandbox:ulid}', [SandboxPreviewController::class, 'show'])
+    ->name('php-wasm.show');
 
