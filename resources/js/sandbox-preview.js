@@ -2,6 +2,8 @@ import { onMessage } from 'php-cgi-wasm/msg-bus';
 import { PhpWeb } from 'php-wasm/PhpWeb';
 import { sendMessageFor } from 'php-cgi-wasm/msg-bus';
 
+const sendMessage = sendMessageFor((`${window.location.origin}/cgi-worker.mjs`))
+
 console.log('Hello from sandbox.js');
 
 // Register the service worker
@@ -9,7 +11,6 @@ navigator.serviceWorker.register(`/cgi-worker.js`);
 navigator.serviceWorker.addEventListener('message', onMessage);
 setTimeout(() => navigator.serviceWorker.controller || window.location.reload(), 350);
 
-const sendMessage = sendMessageFor((`${window.location.origin}/cgi-worker.mjs`))
 
 
 // Prepare the sandbox. Get the PHP project from the server

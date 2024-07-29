@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { FileTree } from './FileTree';
 import { CodeEditor } from './CodeEditor';
-import { ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
+import { ResizablePanel, ResizablePanelGroup, ResizableHandle } from "@/components/ui/resizable";
 
 const fileStructure = {
     'project': {
@@ -30,21 +30,27 @@ function App() {
     const [selectedFile, setSelectedFile] = useState(null);
 
     const handleFileSelect = (path, content) => {
-        setSelectedFile({ path, content });
+        // setSelectedFile({ path, content });
     };
 
     return (
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto p-4 h-screen flex flex-col">
             <h1 className="text-2xl font-bold mb-4">Web-based Code Editor</h1>
-            <ResizablePanelGroup direction="horizontal">
-                <ResizablePanel defaultSize={25}>
-                    <div className="bg-white p-4 rounded-l shadow-md overflow-auto h-[600px]">
+            <ResizablePanelGroup
+                direction="horizontal"
+                className="flex-grow rounded-lg border"
+            >
+                <ResizablePanel defaultSize={25} minSize={20}>
+                    <div className="h-full p-4 bg-white overflow-auto">
                         <h2 className="text-lg font-semibold mb-2">File Tree</h2>
                         <FileTree structure={fileStructure} onFileSelect={handleFileSelect} />
                     </div>
                 </ResizablePanel>
+
+                <ResizableHandle />
+
                 <ResizablePanel defaultSize={75}>
-                    <div className="bg-white p-4 rounded-r shadow-md h-[600px]">
+                    <div className="h-full p-4 bg-white">
                         <CodeEditor file={selectedFile} />
                     </div>
                 </ResizablePanel>
@@ -52,5 +58,4 @@ function App() {
         </div>
     );
 }
-
 export default App;

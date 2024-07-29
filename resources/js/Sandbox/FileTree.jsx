@@ -1,31 +1,34 @@
-// FileTree.js
-import React from 'react';
-import { FolderIcon, FileIcon } from 'lucide-react';
+import React, {useState} from 'react'
+import {FolderIcon, FileIcon} from 'lucide-react'
+import sendMessage from '@/lib/cgiWorkerMsgBus'
 
-export function FileTree({ structure, onFileSelect, path = '' }) {
-  return (
-    <ul className="text-sm">
-      {Object.entries(structure).map(([key, value]) => {
-        const newPath = path ? `${path}/${key}` : key;
-        const isFolder = typeof value === 'object';
+console.log(sendMessage)
 
-        return (
-          <li key={newPath}>
-            <div
-              className="flex items-center cursor-pointer py-1 hover:bg-gray-100"
-              onClick={() => !isFolder && onFileSelect(newPath, value)}
-            >
-              {isFolder ? <FolderIcon className="w-4 h-4 mr-1" /> : <FileIcon className="w-4 h-4 mr-1" />}
-              {key}
-            </div>
-            {isFolder && (
-              <ul className="pl-4">
-                <FileTree structure={value} onFileSelect={onFileSelect} path={newPath} />
-              </ul>
-            )}
-          </li>
-        );
-      })}
-    </ul>
-  );
+export function FileTree({structure, onFileSelect, path = '/persist/01J3YR5QM15578K6YRACP6X3RA'}) {
+
+    const [dirs, setDirs] = useState([])
+    const [files, setFiles] = useState([])
+    const [loading, setLoading] = useState(false)
+
+    console.log('heeey3')
+
+    const loadFiles = () => {
+
+        console.log('heeey2')
+
+        sendMessage('readdir', [path])
+            .then(async entries => {
+                console.log('heeey1')
+                console.log(entries)
+            })
+    }
+
+    loadFiles()
+
+
+    return (
+        <ul className="text-sm">
+
+        </ul>
+    )
 }
