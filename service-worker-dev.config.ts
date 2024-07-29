@@ -14,7 +14,7 @@ const config: webpack.Configuration = {
             },
         ]
     },
-    entry: {'service-worker': './resources/service-worker/cgi-worker.mjs'},
+    entry: { 'service-worker': './resources/service-worker/cgi-worker.mjs' },
     output: {
         path: path.resolve(__dirname, 'public'),
         filename: 'cgi-worker.js',
