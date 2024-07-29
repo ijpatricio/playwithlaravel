@@ -1429,7 +1429,6 @@ __webpack_require__.r(__webpack_exports__);
 
 // Log requests
 const cgi_worker_onRequest = (request, response) => {
-  debugger;
   const url = new URL(request.url);
   const logLine = `[${new Date().toISOString()}]` + `#${cgi_worker_php.count} 127.0.0.1 - "${request.method}` + ` ${url.pathname}" - HTTP/1.1 ${response.status}`;
   console.log(logLine);
