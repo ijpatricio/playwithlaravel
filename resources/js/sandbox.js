@@ -60,6 +60,7 @@ const php = new PhpWeb({sharedLibs, persist: [{mountPath:'/persist'}, {mountPath
     php.addEventListener('error', event => console.log(event.detail));
 
     window.dispatchEvent(new CustomEvent('install-status', {detail: 'Acquiring Lock...'}));
+    console.log('Acquiring Lock...')
 
     const downloader = fetch(`/sandboxes/laravel-11.zip`);
     const initPhpCode = await (await fetch('/browser-php/init.xphp')).text();
@@ -87,6 +88,7 @@ const php = new PhpWeb({sharedLibs, persist: [{mountPath:'/persist'}, {mountPath
         console.log('Sandbox does not exist!');
 
         window.dispatchEvent(new CustomEvent('install-status', {detail: 'Downloading package...'}));
+        console.log('Downloading package...')
 
         const download = await downloader;
         const zipContents = await download.arrayBuffer();
@@ -114,6 +116,7 @@ const php = new PhpWeb({sharedLibs, persist: [{mountPath:'/persist'}, {mountPath
         await sendMessage('storeInit');
 
         window.dispatchEvent(new CustomEvent('install-status', {detail: 'Unpacking files...'}));
+        console.log('Unpacking files...')
 
         await sendMessage('writeFile', ['/persist/restore.zip', new Uint8Array(zipContents)]);
         await sendMessage('writeFile', ['/config/restore-path.tmp', '/persist/' + sandboxUlid]);
@@ -121,10 +124,12 @@ const php = new PhpWeb({sharedLibs, persist: [{mountPath:'/persist'}, {mountPath
         console.log(await php.run(initPhpCode));
 
         window.dispatchEvent(new CustomEvent('install-status', {detail: 'Refreshing PHP...'}));
+        console.log('Refreshing PHP...')
 
         await sendMessage('refresh', []);
 
         window.dispatchEvent(new CustomEvent('install-status', {detail: 'Opening site...'}));
+        console.log('Opening site...')
 
         if(window.opener)
         {
