@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { FileTree } from './FileTree';
 import { CodeEditor } from './CodeEditor';
+import { Editor } from './Editor';
 import { ResizablePanel, ResizablePanelGroup, ResizableHandle } from "@/components/ui/resizable";
 
 const fileStructure = {
@@ -51,7 +52,8 @@ function App() {
 
                 <ResizablePanel defaultSize={75}>
                     <div className="h-full p-4 bg-white">
-                        <CodeEditor file={selectedFile} />
+                        {/*<CodeEditor file={selectedFile} />*/}
+                        <Editor />
                     </div>
                 </ResizablePanel>
             </ResizablePanelGroup>
