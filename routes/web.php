@@ -28,4 +28,5 @@ Route::get('/php-wasm/cgi-bin/{sandbox:ulid}', [SandboxPreviewController::class,
     ->name('php-wasm.show');
 
 
-Route::get('/fruit', FruitController::class)->name('fruit.index');
+Route::get('/wasm/fruit', FruitController::class)->name('wasm.fruit');
+Route::view('/wasm/counter', 'wasm.counter')->name('wasm.counter');

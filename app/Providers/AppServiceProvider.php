@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Blade::directive('wasmScript', function($expression) {
+            return <<<EOT
+            <script type="text/php" data-stdout="#output" data-stderr="#error">
+                {!! \Illuminate\Support\Facades\File::get(
+                    resource_path('wasm-scripts/'.{$expression})
+                ) !!}
+            </script>
+            EOT;
+        });
     }
 }
