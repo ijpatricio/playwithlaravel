@@ -111,7 +111,7 @@ export function EditorFolder({path = '/', name = ''}) {
     }
 
     return (
-        <div className="editor-entry editor-folder">
+        <div className="text-sm truncate">
             <p className={'flex gap-2 cursor-pointer rounded hover:bg-blue-500'} onClick={toggleExpanded} onContextMenu={onContext} onBlur={onBlur} tabIndex="0"
                ref={box}>
                 <img

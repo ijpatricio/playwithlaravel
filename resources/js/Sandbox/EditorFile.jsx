@@ -108,6 +108,12 @@ export default function EditorFile({path, name}) {
             openFile()
             init = true
         }
+
+        window.addEventListener('editor-open-file', () => setIsSelected(false))
+
+        return () => {
+            window.removeEventListener('editor-open-file', () => setIsSelected(false))
+        }
     }, [])
 
     const extension = _path.split('.').pop()
@@ -117,7 +123,7 @@ export default function EditorFile({path, name}) {
             <p
                 className={cn(
                     'flex gap-1 px-2 cursor-pointer rounded hover:bg-blue-500 whitespace-nowrap',
-                    isSelected && 'bg-blue-500',
+                    isSelected && 'border-blue-500 border bg-blue-100',
                 )}
                 onClick={openFile}
                 tabIndex="0"

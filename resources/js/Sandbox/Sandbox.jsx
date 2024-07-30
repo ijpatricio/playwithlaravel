@@ -16,7 +16,7 @@ function App() {
                 className="flex-grow rounded-lg border"
             >
                 <ResizablePanel defaultSize={25} minSize={20}>
-                    <div className="h-full p-4 bg-white overflow-auto">
+                    <div className="h-full p-1 bg-white overflow-auto">
                         <h2 className="text-lg font-semibold mb-2">Project files</h2>
                         <EditorFolder path="/persist/01J3YR5QM15578K6YRACP6X3RA" name="/" />
                     </div>
