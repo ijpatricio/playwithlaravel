@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import laravel from 'laravel-vite-plugin'
 import path from 'path'
 import react from '@vitejs/plugin-react'
+import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
     resolve: {
@@ -12,6 +13,14 @@ export default defineConfig({
     },
     plugins: [
         react(),
+        vue({
+            template: {
+                transformAssetUrls: {
+                    base: null,
+                    includeAbsolute: false,
+                },
+            },
+        }),
         laravel({
             input: [
                 'resources/sass/app.scss',
