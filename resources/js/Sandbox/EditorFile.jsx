@@ -17,6 +17,8 @@ import deleteIcon from './icons/delete-icon-16.png'
 import {useEffect, useMemo, useRef, useState} from 'react'
 import {sendMessageFor} from 'php-cgi-wasm/msg-bus'
 
+import { cn } from "@/lib/utils"
+
 const sendMessage = sendMessageFor((`${window.location.origin}/cgi-worker.mjs`))
 
 const icons = {
@@ -45,6 +47,7 @@ export default function EditorFile({path, name}) {
     const [deleted, setDeleted] = useState(false)
     const [_name, setName] = useState(name)
     const [_path, setPath] = useState(path)
+    const [isSelected, setIsSelected] = useState(false)
     const box = useRef(null)
 
     const query = useMemo(() => new URLSearchParams(window.location.search), [])
@@ -61,6 +64,8 @@ export default function EditorFile({path, name}) {
 
     const openFile = () => {
         window.dispatchEvent(new CustomEvent('editor-open-file', {detail: _path}))
+
+        setIsSelected(true)
 
         query.set('path', _path)
 
@@ -110,7 +115,10 @@ export default function EditorFile({path, name}) {
     return !deleted && (
         <div className="editor-entry editor-file">
             <p
-                className={'flex gap-1 px-2 cursor-pointer rounded hover:bg-blue-500 whitespace-nowrap'}
+                className={cn(
+                    'flex gap-1 px-2 cursor-pointer rounded hover:bg-blue-500 whitespace-nowrap',
+                    isSelected && 'bg-blue-500',
+                )}
                 onClick={openFile}
                 tabIndex="0"
                 onContextMenu={onContext}
