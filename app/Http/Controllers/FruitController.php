@@ -11,6 +11,6 @@ class FruitController extends Controller
         // Pretend data came from some calculations/queriers, etc...
         $fruits = ['Apple', 'Banana', 'Orange', 'Mango', 'Pineapple', 'Grapes'];
 
-        return view('fruit.index', ['fruits' => $fruits]);
+        return view('wasm.fruit', ['fruits' => $fruits]);
     }
 }
