@@ -85,7 +85,7 @@ export function CodeEditor() {
     return (
         <>
             <div className={'flex my-1 pr-1 justify-end'}>
-                <Save size={20} onClick={handleSave}/>
+                <Save className={'p-0.5 cursor-pointer rounded-lg hover:bg-blue-200'} size={20} onClick={handleSave}/>
             </div>
             <AceEditor
                 ref={editor}
