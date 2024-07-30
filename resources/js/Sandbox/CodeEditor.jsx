@@ -84,10 +84,9 @@ export function CodeEditor() {
 
     return (
         <>
-            <div className={'flex justify-end'}>
-                <Save onClick={handleSave}/>
+            <div className={'flex my-1 pr-1 justify-end'}>
+                <Save size={20} onClick={handleSave}/>
             </div>
-            <div className={'h-2'}></div>
             <AceEditor
                 ref={editor}
                 mode={'javascript'}
