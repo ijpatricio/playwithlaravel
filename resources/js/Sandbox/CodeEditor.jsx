@@ -1,7 +1,11 @@
 // CodeEditor.js
-import React from 'react'
+import {useRef, useState} from 'react'
 import AceEditor from 'react-ace'
-import { sendMessageFor } from 'php-cgi-wasm/msg-bus';
+import ace from 'ace-builds/src-noconflict/ace'
+import {sendMessageFor} from 'php-cgi-wasm/msg-bus'
+import { Save } from 'lucide-react'
+import { useToast } from "@/components/ui/use-toast"
+
 const sendMessage = sendMessageFor((`${window.location.origin}/cgi-worker.mjs`))
 
 // Import the modes you need
@@ -9,69 +13,61 @@ import 'ace-builds/src-noconflict/mode-javascript'
 import 'ace-builds/src-noconflict/mode-html'
 import 'ace-builds/src-noconflict/mode-css'
 import 'ace-builds/src-noconflict/mode-json'
+import 'ace-builds/src-noconflict/mode-markdown'
+import 'ace-builds/src-noconflict/mode-text'
+import 'ace-builds/src-noconflict/mode-yaml'
 import 'ace-builds/src-noconflict/mode-php.js'
 import 'ace-builds/src-noconflict/mode-php_laravel_blade.js'
 
 // Import a theme
 import 'ace-builds/src-noconflict/theme-monokai'
+import 'ace-builds/src-noconflict/theme-nord_dark'
 
-const openFile = async path => {
-    const name = path.split('/').pop()
-    const newFile = openFilesMap.has(path)
-        ? openFilesMap.get(path)
-        : {name, path}
 
-    query.set('path', path)
+export function CodeEditor() {
 
-    window.history.replaceState({}, null, window.location.pathname + '?' + query)
+    const { toast } = useToast()
 
-    currentPath.current = path
+    const editor = useRef(null)
+    const [currentPath, setCurrentPath] = useState(null)
 
-    editor.current.editor.setReadOnly(false)
 
-    if (!newFile.session) {
-        openFilesMap.set(path, newFile)
-    }
+// Listen for 'editor-open-file' event
+    window.addEventListener('editor-open-file', async event => {
+        const path = event.detail
 
-    const openFilesList = [...openFilesMap.entries()].map(e => e[1])
+        setCurrentPath(path)
 
-    openFilesList.map(f => f.active = false)
+        const code = new TextDecoder().decode(
+            await sendMessage('readFile', [path])
+        )
 
-    newFile.active = true
-
-    setOpenFiles(openFilesList)
-
-    if (newFile.session) {
-        editor.current.editor.setSession(newFile.session)
-        return
-    }
-
-    const code = new TextDecoder().decode(
-        await sendMessage('readFile', [path])
-    )
-
-    setContents(code)
-
-    const extension = path.split('.').pop()
-    const mode = modes[extension] ?? 'ace/mode/text'
-
-    newFile.session = ace.createEditSession(code, mode)
-
-    newFile.dirty = false
-
-    newFile.session.on('change', () => {
-        newFile.dirty = true
-        const openFilesList = [...openFilesMap.entries()].map(e => e[1])
-        setOpenFiles(openFilesList)
+        if (path) {
+            const editor = ace.edit('code-editor', {
+                mode: 'ace/mode/php',
+                theme: 'ace/theme/monokai',
+            })
+            editor.setValue(code)
+            editor.clearSelection()
+            editor.gotoLine(1, 0, true)
+            editor.focus()
+        }
     })
 
-    editor.current.editor.setSession(newFile.session)
+    const handleSave = () => {
+        const editor = ace.edit('code-editor')
+        const contents = editor.getValue()
 
-    tabBox.current.scrollTo({left: -tabBox.current.scrollWidth, behavior: 'smooth'})
-}
+        sendMessage('writeFile', [
+            currentPath,
+            new TextEncoder().encode(contents),
+        ])
+        
+        // toast({
+        //     description: "Saved.",
+        // })
+    }
 
-
-export function CodeEditor({file}) {
     const getLanguage = (filename) => {
         const extension = filename.split('.').pop()
         switch (extension) {
@@ -87,19 +83,26 @@ export function CodeEditor({file}) {
     }
 
     return (
-        <AceEditor
-            mode={file ? getLanguage(file.path) : 'javascript'}
-            theme="monokai"
-            name="code-editor"
-            editorProps={{$blockScrolling: true}}
-            value={file ? file.content : '// Select a file from the tree to start editing'}
-            fontSize={14}
-            width="100%"
-            height="100%"
-            setOptions={{
-                useWorker: false,
-                showPrintMargin: false,
-            }}
-        />
+        <>
+            <div className={'flex justify-end'}>
+                <Save onClick={handleSave}/>
+            </div>
+            <div className={'h-2'}></div>
+            <AceEditor
+                ref={editor}
+                mode={'javascript'}
+                theme="nord_dark"
+                name="code-editor"
+                editorProps={{$blockScrolling: true}}
+                value={'// Select a file from the tree to start editing'}
+                fontSize={14}
+                width="100%"
+                height="100%"
+                setOptions={{
+                    useWorker: false,
+                    showPrintMargin: false,
+                }}
+            />
+        </>
     )
 }
