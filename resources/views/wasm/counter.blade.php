@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
 @push('start-head-scripts')
-    <script async type = "text/javascript" src = "https://cdn.jsdelivr.net/npm/php-wasm/php-tags.mjs"></script>
+
+    <script async type="text/javascript" src="https://cdn.jsdelivr.net/npm/php-wasm/php-tags.mjs"></script>
+
     @wasmScript('counter.php')
+
 @endpush
 
 @section('content')
