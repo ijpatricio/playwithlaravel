@@ -62,7 +62,7 @@ export function CodeEditor() {
             currentPath,
             new TextEncoder().encode(contents),
         ])
-        
+
         // toast({
         //     description: "Saved.",
         // })
