@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FruitController;
 use App\Http\Controllers\NewSandboxController;
 use App\Http\Controllers\SandboxController;
 use App\Http\Controllers\SandboxPreviewController;
@@ -26,3 +27,6 @@ Route::get('/sandbox/{sandbox:ulid}', [SandboxController::class, 'show'])
 Route::get('/php-wasm/cgi-bin/{sandbox:ulid}', [SandboxPreviewController::class, 'show'])
     ->name('php-wasm.show');
 
+
+Route::get('/wasm/fruit', FruitController::class)->name('wasm.fruit');
+Route::view('/wasm/counter', 'wasm.counter')->name('wasm.counter');

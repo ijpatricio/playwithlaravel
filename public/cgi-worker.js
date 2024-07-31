@@ -1472,7 +1472,7 @@ const cgi_worker_php = new php_cgi_wasm_PhpCgiWorker_mjs__WEBPACK_IMPORTED_MODUL
 self.addEventListener('install', event => cgi_worker_php.handleInstallEvent(event));
 self.addEventListener('activate', event => cgi_worker_php.handleActivateEvent(event));
 self.addEventListener('fetch', event => {
-  // console.log('Fetch', event.request.url)
+  console.log('Fetch', event.request.url);
   cgi_worker_php.handleFetchEvent(event);
 });
 self.addEventListener('message', event => cgi_worker_php.handleMessageEvent(event));

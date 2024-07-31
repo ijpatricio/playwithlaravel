@@ -65,8 +65,16 @@
             <div class="flex justify-center px-0 mt-16 sm:items-center sm:justify-between">
                 <div class="text-sm text-center text-gray-500 dark:text-gray-400 sm:text-left">
                 </div>
-                <div class="ml-4 text-sm text-center text-gray-500 dark:text-gray-400 sm:text-right sm:ml-0">
-                    Play With Laravel (Alpha version)
+                <div class="ml-4 text-lg text-center text-gray-500 dark:text-gray-400 sm:text-right sm:ml-0">
+                    <p class="">
+                        Playground with PHP, Laravel, Livewire, Filament and SQLite
+                    </p>
+                    <p class="mt-8">
+                        All
+                        <span class="uppercase underline bg-indigo-400 rounded-lg text-white font-bold px-2 py-0.5 mx-1">
+                            in browser
+                        </span> thanks to WebAssembly
+                    </p>
                 </div>
             </div>
 
