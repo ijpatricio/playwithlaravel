@@ -6,4 +6,4 @@ I'll be updating this as this goes, I'm opening it open source right away so tha
 
 ## Credits
 
-Thanks to Sean Morris for the WASM magic. Here's repo: https://github com/seanmorris/php-wasm
+Thanks to Sean Morris for the WASM magic. Here's repo: https://github.com/seanmorris/php-wasm
