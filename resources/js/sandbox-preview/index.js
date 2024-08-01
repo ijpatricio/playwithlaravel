@@ -4,8 +4,6 @@ import { sendMessageFor } from 'php-cgi-wasm/msg-bus';
 
 const sendMessage = sendMessageFor((`${window.location.origin}/cgi-worker.mjs`))
 
-console.log('Hello from sandbox.js');
-
 // Register the service worker
 navigator.serviceWorker.register(`/cgi-worker.js`);
 navigator.serviceWorker.addEventListener('message', onMessage);

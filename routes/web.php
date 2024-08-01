@@ -21,19 +21,19 @@ Route::get('/new/{type?}', NewSandboxController::class)->name('new');
 Route::get('/sandbox/{sandbox:ulid}', [SandboxController::class, 'show'])
     ->name('sandbox.show');
 
-Route::get('/php-wasm/cgi-bin/{sandbox:ulid}', [SandboxController::class, 'show'])
+Route::get('/php-wasm/cgi-bin/{sandbox:ulid}', [SandboxController::class, 'preview'])
     ->name('sandbox.preview');
 
-Route::domain('{sandbox}-sandbox.' . config('app.domain'))->group(function () {
-    Route::get('/{any}', fn($sandbox) => dd('sandbox-', $sandbox))
-        ->where('{any}', '(.*)')
-        ->name('sandbox');
-});
-
-Route::domain('{sandbox}.' . config('app.domain'))
-    ->group(function () {
-        Route::get('/', fn($sandbox) => dd($sandbox));
-    });
+//Route::domain('{sandbox}-sandbox.' . config('app.domain'))->group(function () {
+//    Route::get('/{any}', fn($sandbox) => dd('sandbox-', $sandbox))
+//        ->where('{any}', '(.*)')
+//        ->name('sandbox');
+//});
+//
+//Route::domain('{sandbox}.' . config('app.domain'))
+//    ->group(function () {
+//        Route::get('/', fn($sandbox) => dd($sandbox));
+//    });
 
 Route::view('/', 'welcome')->name('home');
 

@@ -9,5 +9,5 @@
 @endpush
 
 @section('content')
-    @vite(['resources/js/sandbox-preview.js'])
+    @vite(['resources/js/sandbox-preview/index.js'])
 @endsection
