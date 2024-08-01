@@ -7,7 +7,7 @@
         "build:sw": "vite build --config vite.service-worker.config.js",
         "webpack:sw": "npx webpack --config service-worker-dev.config.ts",
         "build:app": "vite build",
-        "build": "npm run webpack:sw ; npm run vite build"
+        "build": "npm run webpack:sw ; vite build"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5",
