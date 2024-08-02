@@ -1,0 +1,138 @@
+{
+  "../../experiments/php-wasm/packages/php-wasm/php-web.mjs.wasm": {
+    "file": "assets/php-web.mjs-BiGQy2aM.wasm",
+    "src": "../../experiments/php-wasm/packages/php-wasm/php-web.mjs.wasm"
+  },
+  "_msg-bus-CqDI8A5X.js": {
+    "file": "assets/msg-bus-CqDI8A5X.js",
+    "name": "msg-bus"
+  },
+  "resources/js/Sandbox/icons/delete-icon-16.png": {
+    "file": "assets/delete-icon-16-CtluFwm9.png",
+    "src": "resources/js/Sandbox/icons/delete-icon-16.png"
+  },
+  "resources/js/Sandbox/icons/rename-icon-16.png": {
+    "file": "assets/rename-icon-16-BNUyCelK.png",
+    "src": "resources/js/Sandbox/icons/rename-icon-16.png"
+  },
+  "resources/js/Sandbox/index.js": {
+    "file": "assets/index-C5pYlSJK.js",
+    "name": "index",
+    "src": "resources/js/Sandbox/index.js",
+    "isEntry": true,
+    "imports": [
+      "_msg-bus-CqDI8A5X.js"
+    ],
+    "assets": [
+      "assets/file-C-w2EGU1.svg",
+      "assets/file.php-CNZMza6l.svg",
+      "assets/file.js-DyeKjRj0.svg",
+      "assets/file.txt-C491zxDr.svg",
+      "assets/file.html-DYUiKJz1.svg",
+      "assets/file.markdown-B6BRLm3d.svg",
+      "assets/file.json-wgdU2RDX.svg",
+      "assets/file.sh-BIEsh15P.svg",
+      "assets/file.css-Ghfkg50Q.svg",
+      "assets/file.xml-CNlhWR__.svg",
+      "assets/file.yaml-BHzaEkDe.svg",
+      "assets/file.zip-B2Gk3sID.svg",
+      "assets/rename-icon-16-BNUyCelK.png",
+      "assets/delete-icon-16-CtluFwm9.png",
+      "assets/folder.open-D4aTGxPT.svg",
+      "assets/folder.close-DhcYjRKg.svg",
+      "assets/tail-spin-CubMW0ei.svg"
+    ]
+  },
+  "resources/js/Sandbox/nomo-dark/file.css.svg": {
+    "file": "assets/file.css-Ghfkg50Q.svg",
+    "src": "resources/js/Sandbox/nomo-dark/file.css.svg"
+  },
+  "resources/js/Sandbox/nomo-dark/file.html.svg": {
+    "file": "assets/file.html-DYUiKJz1.svg",
+    "src": "resources/js/Sandbox/nomo-dark/file.html.svg"
+  },
+  "resources/js/Sandbox/nomo-dark/file.js.svg": {
+    "file": "assets/file.js-DyeKjRj0.svg",
+    "src": "resources/js/Sandbox/nomo-dark/file.js.svg"
+  },
+  "resources/js/Sandbox/nomo-dark/file.json.svg": {
+    "file": "assets/file.json-wgdU2RDX.svg",
+    "src": "resources/js/Sandbox/nomo-dark/file.json.svg"
+  },
+  "resources/js/Sandbox/nomo-dark/file.markdown.svg": {
+    "file": "assets/file.markdown-B6BRLm3d.svg",
+    "src": "resources/js/Sandbox/nomo-dark/file.markdown.svg"
+  },
+  "resources/js/Sandbox/nomo-dark/file.php.svg": {
+    "file": "assets/file.php-CNZMza6l.svg",
+    "src": "resources/js/Sandbox/nomo-dark/file.php.svg"
+  },
+  "resources/js/Sandbox/nomo-dark/file.sh.svg": {
+    "file": "assets/file.sh-BIEsh15P.svg",
+    "src": "resources/js/Sandbox/nomo-dark/file.sh.svg"
+  },
+  "resources/js/Sandbox/nomo-dark/file.svg": {
+    "file": "assets/file-C-w2EGU1.svg",
+    "src": "resources/js/Sandbox/nomo-dark/file.svg"
+  },
+  "resources/js/Sandbox/nomo-dark/file.txt.svg": {
+    "file": "assets/file.txt-C491zxDr.svg",
+    "src": "resources/js/Sandbox/nomo-dark/file.txt.svg"
+  },
+  "resources/js/Sandbox/nomo-dark/file.xml.svg": {
+    "file": "assets/file.xml-CNlhWR__.svg",
+    "src": "resources/js/Sandbox/nomo-dark/file.xml.svg"
+  },
+  "resources/js/Sandbox/nomo-dark/file.yaml.svg": {
+    "file": "assets/file.yaml-BHzaEkDe.svg",
+    "src": "resources/js/Sandbox/nomo-dark/file.yaml.svg"
+  },
+  "resources/js/Sandbox/nomo-dark/file.zip.svg": {
+    "file": "assets/file.zip-B2Gk3sID.svg",
+    "src": "resources/js/Sandbox/nomo-dark/file.zip.svg"
+  },
+  "resources/js/Sandbox/nomo-dark/folder.close.svg": {
+    "file": "assets/folder.close-DhcYjRKg.svg",
+    "src": "resources/js/Sandbox/nomo-dark/folder.close.svg"
+  },
+  "resources/js/Sandbox/nomo-dark/folder.open.svg": {
+    "file": "assets/folder.open-D4aTGxPT.svg",
+    "src": "resources/js/Sandbox/nomo-dark/folder.open.svg"
+  },
+  "resources/js/Sandbox/tail-spin.svg": {
+    "file": "assets/tail-spin-CubMW0ei.svg",
+    "src": "resources/js/Sandbox/tail-spin.svg"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-l0sNRNKZ.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/js/sandbox-preview/index.js": {
+    "file": "assets/index-BA5DPKVf.js",
+    "name": "index",
+    "src": "resources/js/sandbox-preview/index.js",
+    "isEntry": true,
+    "imports": [
+      "_msg-bus-CqDI8A5X.js"
+    ],
+    "assets": [
+      "assets/php-web.mjs-BiGQy2aM.wasm"
+    ]
+  },
+  "resources/js/sandbox-show.js": {
+    "file": "assets/sandbox-show-SD-SAqZ6.js",
+    "name": "sandbox-show",
+    "src": "resources/js/sandbox-show.js",
+    "isEntry": true,
+    "imports": [
+      "_msg-bus-CqDI8A5X.js"
+    ]
+  },
+  "resources/sass/app.scss": {
+    "file": "assets/app-DzfurbCe.css",
+    "src": "resources/sass/app.scss",
+    "isEntry": true
+  }
+}
