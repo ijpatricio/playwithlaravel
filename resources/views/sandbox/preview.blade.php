@@ -4,7 +4,7 @@
     <script>
         window.PWL = {}
         window.PWL.serviceWorkerUrl = '{{ url('/cgi-worker.mjs') }}'
-        window.PWL.sandboxUlid = '{{ $sandbox->ulid }}'
+        window.PWL.sandboxSlug = '{{ $sandbox->slug }}'
     </script>
 @endpush
 

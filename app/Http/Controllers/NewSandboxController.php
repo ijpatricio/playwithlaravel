@@ -11,8 +11,8 @@ class NewSandboxController extends Controller
 {
     public function __invoke($type = SandboxType::Livewire->value)
     {
-        $sandbox = Sandbox::create([
-            'slug' => Str::ulid(),
+        $sandbox = App\Models\Sandbox::create([
+            'slug' => 'laravel-breeze-livewire-volt',
             'type' => $type,
         ]);
 

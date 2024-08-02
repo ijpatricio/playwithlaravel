@@ -66,22 +66,22 @@ const php = new PhpWeb({sharedLibs, persist: [{mountPath:'/persist'}, {mountPath
     const downloader = fetch(`/sandboxes/laravel-11.zip`);
     const initPhpCode = await (await fetch('/browser-php/init.xphp')).text();
 
-    const sandboxUlid = PWL.sandboxUlid;
+    const sandboxSlug = PWL.sandboxSlug;
 
     await navigator.locks.request('php-wasm-demo-install', async () => {
 
-        const checkPath = await sendMessage('analyzePath', ['/persist/' + sandboxUlid]);
+        const checkPath = await sendMessage('analyzePath', ['/persist/' + sandboxSlug]);
 
         if(checkPath.exists)
         {
             console.log('Sandbox already exists!');
 
             window.demoInstalling = null;
-            window.location = '/php-wasm/cgi-bin/' + sandboxUlid;
+            window.location = '/php-wasm/cgi-bin/' + sandboxSlug;
             if(window.opener)
             {
                 window.opener.dispatchEvent(
-                    new CustomEvent('install-complete', { detail: sandboxUlid })
+                    new CustomEvent('install-complete', { detail: sandboxSlug })
                 );
             }
             return;
@@ -96,20 +96,20 @@ const php = new PhpWeb({sharedLibs, persist: [{mountPath:'/persist'}, {mountPath
 
         const settings = await sendMessage('getSettings');
 
-        const vHostPrefix = '/php-wasm/cgi-bin/' + sandboxUlid;
+        const vHostPrefix = '/php-wasm/cgi-bin/' + sandboxSlug;
         const existingvHost = settings.vHosts.find(vHost => vHost.pathPrefix === vHostPrefix);
 
         if(! existingvHost)
         {
             settings.vHosts.push({
                 pathPrefix: vHostPrefix,
-                directory:  '/persist/' + sandboxUlid + `/public`,
+                directory:  '/persist/' + sandboxSlug + `/public`,
                 entrypoint: `index.php`
             })
         }
         else
         {
-            existingvHost.directory = '/persist/' + sandboxUlid + `/public`
+            existingvHost.directory = '/persist/' + sandboxSlug + `/public`
             existingvHost.entrypoint = `index.php`
         }
 
@@ -120,7 +120,7 @@ const php = new PhpWeb({sharedLibs, persist: [{mountPath:'/persist'}, {mountPath
         console.log('Unpacking files...')
 
         await sendMessage('writeFile', ['/persist/restore.zip', new Uint8Array(zipContents)]);
-        await sendMessage('writeFile', ['/config/restore-path.tmp', '/persist/' + sandboxUlid]);
+        await sendMessage('writeFile', ['/config/restore-path.tmp', '/persist/' + sandboxSlug]);
 
         console.log(await php.run(initPhpCode));
 
@@ -134,7 +134,7 @@ const php = new PhpWeb({sharedLibs, persist: [{mountPath:'/persist'}, {mountPath
 
         if(window.opener)
         {
-            window.opener.dispatchEvent(new CustomEvent('install-complete', {detail: sandboxUlid}));
+            window.opener.dispatchEvent(new CustomEvent('install-complete', {detail: sandboxSlug}));
         }
 
         window.location = vHostPrefix;
