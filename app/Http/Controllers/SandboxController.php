@@ -6,23 +6,24 @@ use App\Models\Sandbox;
 
 class SandboxController extends Controller
 {
+    public const SUBDOMAIN_SUFFIX = '-sandbox';
+
     public function show($sandbox)
     {
-        dd($sandbox);
-        $sandbox = Sandbox::whereUlid($sandbox)->firstOrFail();
-
         return view('sandbox.show', [
-            'sandbox' => $sandbox,
+            'sandbox' => $this->getSandbox($sandbox),
         ]);
     }
 
     public function preview($sandbox)
     {
-//        dd($sandbox);
-        $sandbox = Sandbox::whereUlid(str($sandbox)->upper()->value())->firstOrFail();
-
         return view('sandbox.preview', [
-            'sandbox' => $sandbox,
+            'sandbox' => $this->getSandbox($sandbox),
         ]);
+    }
+
+    private function getSandbox($sandboxUlid)
+    {
+        return Sandbox::whereUlid(str($sandboxUlid)->upper()->value())->firstOrFail();
     }
 }

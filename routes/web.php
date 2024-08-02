@@ -27,7 +27,7 @@ Route::get('/new/{type?}', NewSandboxController::class)->name('new');
 
 // https://123123123-sandbox.playwithlaravel.com # sandbox
 
-Route::domain('{sandbox}-sandbox.' . config('app.domain'))->group(function () {
+Route::domain('{sandbox}' . SandboxController::SUBDOMAIN_SUFFIX . '.' . config('app.domain'))->group(function () {
     Route::get('/', [SandboxController::class, 'show'])
         ->name('sandbox.show');
 });

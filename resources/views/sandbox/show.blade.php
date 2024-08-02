@@ -19,7 +19,7 @@
         <div class="w-1/2 border rounded-lg">
             <div class="flex">
                 <a
-                    href="{{ route('sandbox.preview', $sandbox) }}"
+                    {{ route('sandbox.preview', [ 'sandbox' => $sandbox->ulid , 'any' => '/']) }}
                     target="_blank"
                    class="p-2 border"
                 >
@@ -33,7 +33,7 @@
                 <input type="text" id="address" class="flex-grow border rounded-r p-1"
                        value="/playground/{{ $sandbox->ulid }}" />
             </div>
-            <iframe src="{{ route('sandbox.preview', $sandbox) }}" class="w-full h-full border"></iframe>
+            <iframe src="{{ route('sandbox.preview', [ 'sandbox' => $sandbox->ulid , 'any' => '/']) }}" class="w-full h-full border"></iframe>
         </div>
     </div>
 @endsection
