@@ -62,13 +62,13 @@
                         <div>
                             EXPERIMENTAL
                             <a
-                                href="{{ route('sandbox.show', [ 'sandbox' => $sandbox->ulid , 'any' => '/']) }}"
+                                href="{{ route('sandbox.show', $sandbox->ulid) }}"
                                 class=""
                             >
                                 <span> Sandbox </span>
                             </a>
                             <a
-                                href="{{ route('sandbox.preview', $sandbox->ulid) }}"
+                                href="{{ route('sandbox.preview', [ 'sandbox' => $sandbox->ulid , 'any' => '/']) }}"
                                 class=""
                             >
                                 <span> Preview </span>
