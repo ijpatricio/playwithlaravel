@@ -18,22 +18,30 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/new/{type?}', NewSandboxController::class)->name('new');
 
-Route::get('/sandbox/{sandbox:ulid}', [SandboxController::class, 'show'])
-    ->name('sandbox.show');
-
-Route::get('/php-wasm/cgi-bin/{sandbox:ulid}', [SandboxController::class, 'preview'])
-    ->name('sandbox.preview');
-
-//Route::domain('{sandbox}-sandbox.' . config('app.domain'))->group(function () {
-//    Route::get('/{any}', fn($sandbox) => dd('sandbox-', $sandbox))
-//        ->where('{any}', '(.*)')
-//        ->name('sandbox');
-//});
+//Route::get('/sandbox/{sandbox:ulid}', [SandboxController::class, 'show'])
+//    ->name('sandbox.show');
 //
-//Route::domain('{sandbox}.' . config('app.domain'))
-//    ->group(function () {
-//        Route::get('/', fn($sandbox) => dd($sandbox));
-//    });
+//Route::get('/php-wasm/cgi-bin/{sandbox:ulid}', [SandboxController::class, 'preview'])
+//    ->name('sandbox.preview');
+
+
+// https://123123123-sandbox.playwithlaravel.com # sandbox
+
+Route::domain('{sandbox}-sandbox.' . config('app.domain'))->group(function () {
+    Route::get('/', [SandboxController::class, 'show'])
+        ->name('sandbox.show');
+});
+
+// https://123123123.playwithlaravel.com # preview / full running website (cgi)
+
+Route::domain('{sandbox}.' . config('app.domain'))
+    ->group(function () {
+        Route::get('/', [SandboxController::class, 'preview'])
+            ->name('sandbox.preview');
+        Route::get('/{any}', [SandboxController::class, 'preview'])
+            ->where('{any}', '(.*)')
+            ->name('sandbox.preview');
+    });
 
 Route::view('/', 'welcome')->name('home');
 
