@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('sandboxes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->ulid();
+            $table->string('slug');
             $table->string('type');
             $table->string('title')->nullable();
         });

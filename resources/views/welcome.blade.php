@@ -23,73 +23,35 @@
         @endif
 
         <div class="p-6 mx-auto max-w-7xl lg:p-8">
-
-            <div class="mt-16">
-                <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
-
-                    <a href="/new" class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-indigo-500">
-                        <div>
-                            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-indigo-50 dark:bg-indigo-900/20">
-                                New
-                            </div>
-                            <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">New</h2>
-                            <p class="mt-4 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
-                                Start new playground
-                            </p>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center w-6 h-6 mx-6 shrink-0 stroke-indigo-500">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                        </svg>
-                    </a>
-
-                    @foreach(\App\Models\Sandbox::all() as $sandbox)
-{{--                        <a href="{{ route('sandbox.show', $sandbox->ulid) }}" class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-indigo-500">--}}
-{{--                            <div>--}}
-{{--                                <div class="flex items-center justify-center w-16 h-16 rounded-full bg-indigo-50 dark:bg-indigo-900/20">--}}
-{{--                                    Open--}}
-{{--                                </div>--}}
-{{--                                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">--}}
-{{--                                    Open--}}
-{{--                                </h2>--}}
-{{--                                <p class="mt-4 text-sm leading-relaxed text-gray-500 dark:text-gray-400">--}}
-{{--                                    Sandbox {{ $sandbox->ulid }}--}}
-{{--                                </p>--}}
-{{--                            </div>--}}
-{{--                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="self-center w-6 h-6 mx-6 shrink-0 stroke-indigo-500">--}}
-{{--                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />--}}
-{{--                            </svg>--}}
-{{--                        </a>--}}
-                        <div>
-                            EXPERIMENTAL
-                            <a
-                                href="{{ route('sandbox.show', $sandbox->ulid) }}"
-                                class=""
-                            >
-                                <span> Sandbox </span>
-                            </a>
-                            <a
-                                href="{{ route('sandbox.preview', [ 'sandbox' => $sandbox->ulid , 'any' => '/']) }}"
-                                class=""
-                            >
-                                <span> Preview </span>
-                            </a>
-                        </div>
-
-                    @endforeach
-                </div>
-            </div>
             <div class="flex justify-center px-0 mt-16 sm:items-center sm:justify-between">
                 <div class="text-sm text-center text-gray-500 dark:text-gray-400 sm:text-left">
                 </div>
                 <div class="ml-4 text-lg text-center text-gray-500 dark:text-gray-400 sm:text-right sm:ml-0">
-                    <p class="">
-                        Playground with PHP, Laravel, Livewire, Filament and SQLite
+                    <p class="text-2xl">
+                        Playgrounds with PHP/Laravel
                     </p>
-                    <p class="mt-8">
+                    <p class="text-xl mt-8">
                         All
                         <span class="uppercase underline bg-indigo-400 rounded-lg text-white font-bold px-2 py-0.5 mx-1">
                             in browser
                         </span> thanks to WebAssembly
+                    </p>
+                    <p class="mt-8">
+                        We're just getting started, so please be patient. :)
+                        The first sandbox out in the wild is a full "laravel new installation" with a "Breeze Livewire/Volt App".
+                    </p>
+                    <p>
+                        The editor is under construction. You could see it working here
+                        <a class="cursor-pointer text-indigo-600 hover:text-indigo-700" href="https://www.youtube.com/watch?v=L-MAzsDm5d0">
+                            Youtube video with a demo
+                        </a>,
+                        but it's not finished yet, and already porting it to Vue :). Learning React on the way would just slow things down.
+                    </p>
+                    <p class="mt-8">
+                        Check the sandbox running in your browser:
+                        <a class="cursor-pointer text-indigo-600 hover:text-indigo-700" href="https://laravel-breeze-livewire-volt.playwithlaravel.com" target="_blank">
+                            https://laravel-breeze-livewire-volt.playwithlaravel.com
+                        </a>
                     </p>
                 </div>
             </div>

@@ -6,24 +6,17 @@ use App\Models\Sandbox;
 
 class SandboxController extends Controller
 {
-    public const SUBDOMAIN_SUFFIX = '-sandbox';
-
-    public function show($sandbox)
+    public function show(Sandbox $sandbox)
     {
         return view('sandbox.show', [
-            'sandbox' => $this->getSandbox($sandbox),
+            'sandbox' => $sandbox->slug,
         ]);
     }
 
-    public function preview($sandbox)
+    public function preview(Sandbox $sandbox)
     {
         return view('sandbox.preview', [
-            'sandbox' => $this->getSandbox($sandbox),
+            'sandbox' => $sandbox->slug,
         ]);
-    }
-
-    private function getSandbox($sandboxUlid)
-    {
-        return Sandbox::whereUlid(str($sandboxUlid)->upper()->value())->firstOrFail();
     }
 }

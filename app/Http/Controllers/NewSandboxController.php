@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Sandbox;
 use App\SandboxType;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -13,7 +12,7 @@ class NewSandboxController extends Controller
     public function __invoke($type = SandboxType::Livewire->value)
     {
         $sandbox = Sandbox::create([
-            'ulid' => Str::ulid(),
+            'slug' => Str::ulid(),
             'type' => $type,
         ]);
 
