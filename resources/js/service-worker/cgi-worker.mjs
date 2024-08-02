@@ -1,5 +1,6 @@
 /* eslint-disable no-restricted-globals */
 import { PhpCgiWorker } from "php-cgi-wasm/PhpCgiWorker.mjs";
+import {PhpWeb} from '../../../../../experiments/php-wasm/packages/php-wasm/PhpWeb.mjs'
 
 // Log requests
 const onRequest = (request, response) => {
@@ -20,21 +21,43 @@ const notFound = request => {
 };
 
 const sharedLibs = [
-	`php\${PHP_VERSION}-zlib.so`,
-	`php\${PHP_VERSION}-zip.so`,
-	`php\${PHP_VERSION}-gd.so`,
-	`php\${PHP_VERSION}-iconv.so`,
-	`php\${PHP_VERSION}-intl.so`,
-	`php\${PHP_VERSION}-openssl.so`,
-	`php\${PHP_VERSION}-dom.so`,
-	`php\${PHP_VERSION}-mbstring.so`,
-	`php\${PHP_VERSION}-sqlite.so`,
-	`php\${PHP_VERSION}-pdo-sqlite.so`,
-	`php\${PHP_VERSION}-xml.so`,
-	`php\${PHP_VERSION}-simplexml.so`,
+    `./___lib/php${PhpCgiWorker.phpVersion}-dom.so`,
+    `./___lib/php${PhpCgiWorker.phpVersion}-gd.so`,
+    `./___lib/php${PhpCgiWorker.phpVersion}-iconv.so`,
+    `./___lib/php${PhpCgiWorker.phpVersion}-intl.so`,
+    `./___lib/php${PhpCgiWorker.phpVersion}-mbstring.so`,
+    `./___lib/php${PhpCgiWorker.phpVersion}-openssl.so`,
+    `./___lib/php${PhpCgiWorker.phpVersion}-pdo-sqlite.so`,
+    `./___lib/php${PhpCgiWorker.phpVersion}-phar.so`,
+    `./___lib/php${PhpCgiWorker.phpVersion}-simplexml.so`,
+    `./___lib/php${PhpCgiWorker.phpVersion}-sqlite.so`,
+    `./___lib/php${PhpCgiWorker.phpVersion}-tidy.so`,
+    `./___lib/php${PhpCgiWorker.phpVersion}-xml.so`,
+    `./___lib/php${PhpCgiWorker.phpVersion}-yaml.so`,
+    `./___lib/php${PhpCgiWorker.phpVersion}-zip.so`,
+    `./___lib/php${PhpCgiWorker.phpVersion}-zlib.so`,
+    { url: `./___lib/libcrypto.so`, ini: false },
+    { url: `./___lib/libfreetype.so`, ini: false },
+    { url: `./___lib/libiconv.so`, ini: false },
+    { url: `./___lib/libicudata.so`, ini: false },
+    { url: `./___lib/libicui18n.so`, ini: false },
+    { url: `./___lib/libicuio.so`, ini: false },
+    { url: `./___lib/libicutest.so`, ini: false },
+    { url: `./___lib/libicutu.so`, ini: false },
+    { url: `./___lib/libicuuc.so`, ini: false },
+    { url: `./___lib/libjpeg.so`, ini: false },
+    { url: `./___lib/libonig.so`, ini: false },
+    { url: `./___lib/libpng.so`, ini: false },
+    { url: `./___lib/libsqlite3.so`, ini: false },
+    { url: `./___lib/libssl.so`, ini: false },
+    { url: `./___lib/libtidy.so`, ini: false },
+    { url: `./___lib/libxml2.so`, ini: false },
+    { url: `./___lib/libyaml.so`, ini: false },
+    { url: `./___lib/libz.so`, ini: false },
+    { url: `./___lib/libzip.so`, ini: false },
 ];
 
-const files = [{ parent: '/preload/', name: 'icudt72l.dat', url: './icudt72l.dat' }];
+const files = [{ parent: '/preload/', name: 'icudt72l.dat', url: './___lib/icudt72l.dat' }];
 
 // Spawn the PHP-CGI binary
 const php = new PhpCgiWorker({
