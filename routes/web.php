@@ -36,6 +36,7 @@ Route::domain('{sandbox}' . SandboxController::SUBDOMAIN_SUFFIX . '.' . config('
 
 Route::domain('{sandbox}.' . config('app.domain'))
     ->group(function () {
+        Route::get('/___home', fn() => 'Hey it works!!')->name('another_home');
         Route::get('/', [SandboxController::class, 'preview'])
             ->name('sandbox.preview');
         Route::get('/{any}', [SandboxController::class, 'preview'])
@@ -44,6 +45,7 @@ Route::domain('{sandbox}.' . config('app.domain'))
     });
 
 Route::view('/', 'welcome')->name('home');
+
 
 
 Route::get('/wasm/fruit', FruitController::class)->name('wasm.fruit');

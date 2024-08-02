@@ -61,7 +61,9 @@ const php = new PhpWeb({sharedLibs, persist: [{mountPath:'/persist'}, {mountPath
     window.dispatchEvent(new CustomEvent('install-status', {detail: 'Acquiring Lock...'}));
     console.log('Acquiring Lock...')
 
-    const downloader = fetch(`/sandboxes/laravel-11.zip`);
+    // const downloader = fetch(`/sandboxes/laravel-11.zip`);
+    const downloader = fetch(`/sandboxes/first-sandbox.zip`);
+    // const downloader = fetch(`/sandboxes/filament-demo.zip`);
     const initPhpCode = await (await fetch('/browser-php/init.xphp')).text();
 
     const sandboxUlid = PWL.sandboxUlid;
@@ -75,7 +77,7 @@ const php = new PhpWeb({sharedLibs, persist: [{mountPath:'/persist'}, {mountPath
             console.log('Sandbox already exists!');
 
             window.demoInstalling = null;
-            window.location = '/php-wasm/cgi-bin/' + sandboxUlid;
+            window.location = '/'
             if(window.opener)
             {
                 window.opener.dispatchEvent(
@@ -94,13 +96,13 @@ const php = new PhpWeb({sharedLibs, persist: [{mountPath:'/persist'}, {mountPath
 
         const settings = await sendMessage('getSettings');
 
-        const vHostPrefix = '/php-wasm/cgi-bin/' + sandboxUlid;
+        const vHostPrefix = '/'
         const existingvHost = settings.vHosts.find(vHost => vHost.pathPrefix === vHostPrefix);
 
         if(! existingvHost)
         {
             settings.vHosts.push({
-                pathPrefix: vHostPrefix,
+                pathPrefix: '/',
                 directory:  '/persist/' + sandboxUlid + `/public`,
                 entrypoint: `index.php`
             })
@@ -135,7 +137,7 @@ const php = new PhpWeb({sharedLibs, persist: [{mountPath:'/persist'}, {mountPath
             window.opener.dispatchEvent(new CustomEvent('install-complete', {detail: sandboxUlid}));
         }
 
-        window.location = vHostPrefix;
+        window.location = '/';
     })
 
 
