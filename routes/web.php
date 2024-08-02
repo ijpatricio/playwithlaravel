@@ -3,7 +3,6 @@
 use App\Http\Controllers\FruitController;
 use App\Http\Controllers\NewSandboxController;
 use App\Http\Controllers\SandboxController;
-use App\Http\Controllers\SandboxPreviewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,15 +16,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome')->name('home');
-
 Route::get('/new/{type?}', NewSandboxController::class)->name('new');
 
-Route::get('/sandbox/{sandbox:ulid}', [SandboxController::class, 'show'])
-    ->name('sandbox.show');
+//Route::get('/sandbox/{sandbox:ulid}', [SandboxController::class, 'show'])
+//    ->name('sandbox.show');
+//
+//Route::get('/php-wasm/cgi-bin/{sandbox:ulid}', [SandboxController::class, 'preview'])
+//    ->name('sandbox.preview');
 
-Route::get('/php-wasm/cgi-bin/{sandbox:ulid}', [SandboxPreviewController::class, 'show'])
-    ->name('php-wasm.show');
+
+// https://123123123-sandbox.playwithlaravel.com # sandbox
+
+Route::domain('{sandbox}' . SandboxController::SUBDOMAIN_SUFFIX . '.' . config('app.domain'))->group(function () {
+    Route::get('/', [SandboxController::class, 'show'])
+        ->name('sandbox.show');
+});
+
+// https://123123123.playwithlaravel.com # preview / full running website (cgi)
+
+Route::domain('{sandbox}.' . config('app.domain'))
+    ->group(function () {
+        Route::get('/___home', fn() => 'Hey it works!!')->name('another_home');
+        Route::get('/', [SandboxController::class, 'preview'])
+            ->name('sandbox.preview');
+        Route::get('/{any}', [SandboxController::class, 'preview'])
+            ->where('{any}', '(.*)')
+            ->name('sandbox.preview');
+    });
+
+Route::view('/', 'welcome')->name('home');
+
 
 
 Route::get('/wasm/fruit', FruitController::class)->name('wasm.fruit');
