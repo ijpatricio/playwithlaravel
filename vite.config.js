@@ -25,11 +25,15 @@ export default defineConfig({
             input: [
                 'resources/sass/app.scss',
                 'resources/js/app.js',
-                'resources/js/sandbox-preview.js',
+                'resources/js/sandbox-preview/index.js',
                 'resources/js/sandbox-show.js',
                 'resources/js/Sandbox/index.js',
             ],
+            buildDirectory: '___/build',
             refresh: true,
         }),
     ],
+    build: {
+        // outDir: 'public/___/build', // Specify your desired output directory here
+    },
 })
