@@ -42,16 +42,30 @@
                     </p>
                     <p>
                         The editor is under construction. You could see it working here
-                        <a class="cursor-pointer text-indigo-600 hover:text-indigo-700" href="https://www.youtube.com/watch?v=L-MAzsDm5d0">
+                        <a class="cursor-pointer text-indigo-600 hover:text-indigo-700" href="https://www.youtube.com/watch?v=L-MAzsDm5d0" target="_blank">
                             Youtube video with a demo
-                        </a>,
-                        but it's not finished yet, and already porting it to Vue :). Learning React on the way would just slow things down.
+                        </a>.
+                    </p>
+                    <p>
+                        It's not finished yet, but it's well on the way!
                     </p>
                     <p class="mt-8">
-                        Check the sandbox running in your browser:
+                        Check the sandbox running in your browser: <br>
                         <a class="cursor-pointer text-indigo-600 hover:text-indigo-700" href="https://laravel-breeze-livewire-volt.playwithlaravel.com" target="_blank">
                             https://laravel-breeze-livewire-volt.playwithlaravel.com
                         </a>
+                    </p>
+                    <p class="mt-8">
+                        Check the repository: <br>
+                        <a class="cursor-pointer text-indigo-600 hover:text-indigo-700" href="https://github.com/ijpatricio/playwithlaravel" target="_blank">
+                            https://github.com/ijpatricio/playwithlaravel
+                        </a>
+                    </p>
+                    <p class="mt-16">
+                        PHP-WASM Apprentice <a href="https://github.com/ijpatricio" target="_blank" class="text-indigo-600 hover:text-indigo-700">Patricio</a>
+                    </p>
+                    <p class="mt-2">
+                        PHP-WASM Master <a href="https://github.com/seanmorris" target="_blank" class="text-indigo-600 hover:text-indigo-700">Sean</a>
                     </p>
                 </div>
             </div>
