@@ -1921,11 +1921,13 @@ __webpack_require__.r(__webpack_exports__);
 const cgi_worker_onRequest = (request, response) => {
   const url = new URL(request.url);
   const logLine = `[${new Date().toISOString()}]` + `#${cgi_worker_php.count} 127.0.0.1 - "${request.method}` + ` ${url.pathname}" - HTTP/1.1 ${response.status}`;
-  console.log(logLine);
 };
 
 // Formatted 404s
 const cgi_worker_notFound = request => {
+  if (request.url.pathname === '/') {
+    return fetch(request);
+  }
   return new Response(`<body><h1>404</h1>${request.url} not found</body>`, {
     status: 404,
     headers: {

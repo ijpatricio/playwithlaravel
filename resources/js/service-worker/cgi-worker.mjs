@@ -9,11 +9,14 @@ const onRequest = (request, response) => {
 		+ `#${php.count} 127.0.0.1 - "${request.method}`
 		+ ` ${url.pathname}" - HTTP/1.1 ${response.status}`;
 
-	console.log(logLine);
 };
 
 // Formatted 404s
 const notFound = request => {
+    if (request.url.pathname === '/') {
+        return fetch(request)
+    }
+
 	return new Response(
 		`<body><h1>404</h1>${request.url} not found</body>`,
 		{status: 404, headers:{'Content-Type': 'text/html'}}
