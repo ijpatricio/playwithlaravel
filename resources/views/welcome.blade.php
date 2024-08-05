@@ -56,6 +56,12 @@
                         </a>
                     </p>
                     <p class="mt-8">
+                        Now, we can also run PHP in a webpage: <br>
+                        <a class="cursor-pointer text-indigo-600 hover:text-indigo-700" href="{{ route('wasm.counter')  }}" target="_blank">
+                            Visit a PHP counter in a webapge
+                        </a>
+                    </p>
+                    <p class="mt-8">
                         Check the repository: <br>
                         <a class="cursor-pointer text-indigo-600 hover:text-indigo-700" href="https://github.com/ijpatricio/playwithlaravel" target="_blank">
                             https://github.com/ijpatricio/playwithlaravel

@@ -10,15 +10,17 @@
 
 @section('content')
     <div class="h-screen flex flex-col gap-2 space-y-12 items-center justify-center">
+
+        <div class="mt-8">
+            <a class="cursor-pointer text-indigo-600 hover:text-indigo-700" href="{{ route('home')  }}" target="_blank">
+                Back home
+            </a>
+        </div>
+
+
         <div>
-            Thank you to Sean Morris for creating the
-            <a
-                class="cursor-pointer text-blue-500 hover:text-blue-700"
-                target="_blank"
-                href="https://github.com/seanmorris/php-wasm"
-            >
-                PHP-WASM
-            </a> library, and teaching me all this new stuff.
+            <p>This is a simple counter that increments and decrements a counter every time you click the buttons.</p>
+            <p>BUT, it's written in PHP, and running in the browser. Right-click, and check the page source.</p>
         </div>
 
         <div class="flex items-center gap-4">
