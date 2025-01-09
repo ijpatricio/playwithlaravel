@@ -18,7 +18,7 @@
         @viteReactRefresh
         @stack('start-head-scripts')
         @stack('scripts')
-        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+        @vite(['resources/sass/app.scss'])
         @livewireStyles
         @livewireScripts
 
