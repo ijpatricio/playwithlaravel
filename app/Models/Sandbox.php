@@ -12,4 +12,13 @@ class Sandbox extends Model
     protected $casts = [
         'kind' => SandboxType::class,
     ];
+
+    public function getUrl(): string
+    {
+        $appDomain = config('app.domain');
+        $appUrl = config('app.url');
+
+        return str($appUrl)
+            ->replace($appDomain, "{$this->slug}.{$appDomain}");
+    }
 }
