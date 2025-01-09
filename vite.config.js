@@ -24,7 +24,6 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/sass/app.scss',
-                'resources/js/app.js',
                 'resources/js/sandbox-preview/index.js',
                 'resources/js/sandbox-show.js',
                 'resources/js/Sandbox/index.js',

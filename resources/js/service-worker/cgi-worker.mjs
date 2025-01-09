@@ -1,6 +1,5 @@
 /* eslint-disable no-restricted-globals */
 import { PhpCgiWorker } from "php-cgi-wasm/PhpCgiWorker.mjs";
-import {PhpWeb} from '../../../../../experiments/php-wasm/packages/php-wasm/PhpWeb.mjs'
 
 // Log requests
 const onRequest = (request, response) => {

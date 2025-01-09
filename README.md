@@ -7,3 +7,13 @@ I'll be updating this as this goes, I'm opening it open source right away so tha
 ## Credits
 
 Thanks to Sean Morris for the WASM magic. Here's repo: https://github.com/seanmorris/php-wasm
+
+
+## Instructions
+
+- Clone the repo...
+- ......
+- ...
+- Setup local domain and subdomains
+- chrome://flags/#unsafely-treat-insecure-origin-as-secure
+- ![img_1.png](img_1.png)

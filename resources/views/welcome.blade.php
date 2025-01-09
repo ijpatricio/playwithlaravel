@@ -49,12 +49,32 @@
                     <p>
                         It's not finished yet, but it's well on the way!
                     </p>
-                    <p class="mt-8">
-                        Check the sandbox running in your browser: <br>
-                        <a class="cursor-pointer text-indigo-600 hover:text-indigo-700" href="https://laravel-breeze-livewire-volt.playwithlaravel.com" target="_blank">
-                            https://laravel-breeze-livewire-volt.playwithlaravel.com
-                        </a>
-                    </p>
+{{--                    <p class="mt-8">--}}
+{{--                        Check the sandbox running in your browser: <br>--}}
+{{--                        <a class="cursor-pointer text-indigo-600 hover:text-indigo-700" href="https://laravel-breeze-livewire-volt.playwithlaravel.com" target="_blank">--}}
+{{--                            https://laravel-breeze-livewire-volt.playwithlaravel.com--}}
+{{--                        </a>--}}
+{{--                    </p>--}}
+                    @php
+                        $sandboxes = \App\Models\Sandbox::get();
+                    @endphp
+                    <div>
+                        <p class="mt-8">
+                            Available sandboxes:
+                        </p>
+                        @foreach($sandboxes as $sandbox)
+                            <p class="mt-2">
+                                Sandbox:
+                                <a
+                                    class="cursor-pointer text-indigo-600 hover:text-indigo-700"
+                                    href="{{ 'http://' . $sandbox->slug . '.' . config('app.domain') . ':8000' }}"
+                                    target="_blank"
+                                >
+                                    {{ $sandbox->title }}
+                                </a>
+                            </p>
+                        @endforeach
+                    </div>
                     <p class="mt-8">
                         Now, we can also run PHP in a webpage: <br>
                         <a class="cursor-pointer text-indigo-600 hover:text-indigo-700" href="{{ route('wasm.counter')  }}" target="_blank">

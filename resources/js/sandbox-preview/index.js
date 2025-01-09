@@ -138,7 +138,6 @@ const php = new PhpWeb({
         await sendMessage('refresh', []);
 
         window.dispatchEvent(new CustomEvent('install-status', {detail: 'Opening site...'}));
-        console.log('Opening site...')
 
         if(window.opener)
         {

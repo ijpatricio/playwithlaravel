@@ -1,11 +1,11 @@
 {
-  "../../experiments/php-wasm/packages/php-wasm/php-web.mjs.wasm": {
-    "file": "assets/php-web.mjs-BiGQy2aM.wasm",
-    "src": "../../experiments/php-wasm/packages/php-wasm/php-web.mjs.wasm"
-  },
-  "_msg-bus-CqDI8A5X.js": {
-    "file": "assets/msg-bus-CqDI8A5X.js",
+  "_msg-bus-B3hjv9Nh.js": {
+    "file": "assets/msg-bus-B3hjv9Nh.js",
     "name": "msg-bus"
+  },
+  "node_modules/php-wasm/php-web.mjs.wasm": {
+    "file": "assets/php-web.mjs-BOqd1rB3.wasm",
+    "src": "node_modules/php-wasm/php-web.mjs.wasm"
   },
   "resources/js/Sandbox/icons/delete-icon-16.png": {
     "file": "assets/delete-icon-16-CtluFwm9.png",
@@ -16,12 +16,12 @@
     "src": "resources/js/Sandbox/icons/rename-icon-16.png"
   },
   "resources/js/Sandbox/index.js": {
-    "file": "assets/index-C5pYlSJK.js",
+    "file": "assets/index-CXLbNnIc.js",
     "name": "index",
     "src": "resources/js/Sandbox/index.js",
     "isEntry": true,
     "imports": [
-      "_msg-bus-CqDI8A5X.js"
+      "_msg-bus-B3hjv9Nh.js"
     ],
     "assets": [
       "assets/file-C-w2EGU1.svg",
@@ -110,28 +110,28 @@
     "isEntry": true
   },
   "resources/js/sandbox-preview/index.js": {
-    "file": "assets/index-Coxp6NID.js",
+    "file": "assets/index-bZDjdSO1.js",
     "name": "index",
     "src": "resources/js/sandbox-preview/index.js",
     "isEntry": true,
     "imports": [
-      "_msg-bus-CqDI8A5X.js"
+      "_msg-bus-B3hjv9Nh.js"
     ],
     "assets": [
-      "assets/php-web.mjs-BiGQy2aM.wasm"
+      "assets/php-web.mjs-BOqd1rB3.wasm"
     ]
   },
   "resources/js/sandbox-show.js": {
-    "file": "assets/sandbox-show-SD-SAqZ6.js",
+    "file": "assets/sandbox-show-DQ-JDzEN.js",
     "name": "sandbox-show",
     "src": "resources/js/sandbox-show.js",
     "isEntry": true,
     "imports": [
-      "_msg-bus-CqDI8A5X.js"
+      "_msg-bus-B3hjv9Nh.js"
     ]
   },
   "resources/sass/app.scss": {
-    "file": "assets/app-CsLZWqH1.css",
+    "file": "assets/app-CH7VOfmU.css",
     "src": "resources/sass/app.scss",
     "isEntry": true
   }
