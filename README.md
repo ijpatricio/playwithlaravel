@@ -35,8 +35,8 @@ Thanks to Sean Morris for the WASM magic. Here's repo: https://github.com/seanmo
     127.0.0.1 playwithlaravel.test livewire.playwithlaravel.test
     ```
   - We may have tools like Valet, Herd or Dnsmasq.
-  - Also, we may use nip.io. It will use the "contained" IP address as the domain.
-    `foo.bar.<IP>.nip.io` will resolve to the IP address of the machine that is running the browser.
+  - Also, we may use [nip.io](https://nip.io/). It will use the "contained" IP address as the domain.
+    `<anything>[.-]<IP Address>.nip.io` will resolve to the IP address of the machine that is running the browser.
     The examples below will resolve to localhost on port 8000:
     - http://playwithlaravel.127.0.0.1.nip.io:8000
     - http://livewire.playwithlaravel.127.0.0.1.nip.io:8000
