@@ -42,7 +42,7 @@ Thanks to Sean Morris for the WASM magic. Here's repo: https://github.com/seanmo
     - http://livewire.playwithlaravel.127.0.0.1.nip.io:8000
 - We need ServiceWorkers to be enabled - so we need SSL.
   - We might have Valet and Herd, and the SSL feature to be used.
-  - Alternatively, we may instruct Chrome to treat these domains as secure - thus enabling ServiceWorkers. 
+  - Alternatively, we may instruct Chrome to treat these hosts as secure - thus enabling ServiceWorkers. 
     - First, navigate to: `chrome://flags/#unsafely-treat-insecure-origin-as-secure`
     - Have the feature enabled, be changing the dropdown to `Enabled`
     - Add the website and sandbox hosts to the list, comma separated.
