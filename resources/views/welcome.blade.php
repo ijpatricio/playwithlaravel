@@ -49,30 +49,24 @@
                     <p>
                         It's not finished yet, but it's well on the way!
                     </p>
-{{--                    <p class="mt-8">--}}
-{{--                        Check the sandbox running in your browser: <br>--}}
-{{--                        <a class="cursor-pointer text-indigo-600 hover:text-indigo-700" href="https://laravel-breeze-livewire-volt.playwithlaravel.com" target="_blank">--}}
-{{--                            https://laravel-breeze-livewire-volt.playwithlaravel.com--}}
-{{--                        </a>--}}
-{{--                    </p>--}}
-                    @php
-                        $sandboxes = \App\Models\Sandbox::get();
-                    @endphp
                     <div>
                         <p class="mt-8">
                             Available sandboxes:
                         </p>
-                        @foreach($sandboxes as $sandbox)
+                        @foreach(App\Models\Sandbox::get() as $sandbox)
                             <p class="mt-2">
                                 Sandbox:
                                 <a
                                     class="cursor-pointer text-indigo-600 hover:text-indigo-700"
-                                    href="{{ 'http://' . $sandbox->slug . '.' . config('app.domain') . ':8000' }}"
+                                    href="{{ $sandbox->getUrl() }}"
                                     target="_blank"
                                 >
                                     {{ $sandbox->title }}
                                 </a>
                             </p>
+                            <div>
+                                {{ $sandbox->getUrl() }}
+                            </div>
                         @endforeach
                     </div>
                     <p class="mt-8">
