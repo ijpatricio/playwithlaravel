@@ -46,9 +46,21 @@ Thanks to Sean Morris for the WASM magic. Here's repo: https://github.com/seanmo
     - First, navigate to: `chrome://flags/#unsafely-treat-insecure-origin-as-secure`
     - Have the feature enabled, be changing the dropdown to `Enabled`
     - Add the website and sandbox hosts to the list, comma separated.
-      ![img_1.png](img_1.png)
+      ![img_1.png](docs/img/img_1.png)
     - Click the `Relaunch` button at the bottom of the page to apply the changes.
 - Run the Laravel app, on port 8000 ()
   ```
   php artisan serve
   ```
+
+## Guidelines
+
+- To ensure assets are always fresh, have the `Disable cache` checkbox checked.
+- To clear the local app, go to:
+  - Inspector -> Application tab
+  - Click the `Clear site data` button to clear the ServiceWorkers and other data.
+- To see the "mounted filesystem" available to WASM, go to:
+  - Inspector -> Application tab
+  - On the left sidebar, Storage - IndexedDB
+  - `/persist` -> FILE_DATA 
+    ![img.png](docs/img/img.png)
